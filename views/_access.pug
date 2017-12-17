@@ -9,5 +9,8 @@ p
   = ' '
   a.btn.btn-secondary(href=view_url) View
 
-p.text-muted Your access will expire #{ new Date(access.expiry*1000).toUTCString() }.
-p.text-muted Until then, you can return to this page to access the file #[a(href=token_url) using this link].
+p.text-muted.
+  Your access will expire #[span(data-countdown-to=access.expiry) at #{ new Date(access.expiry*1000).toUTCString() }].
+  Until then, you can return to this page to access the file #[a(href=token_url) using this link].
+
+script(src='_assets/countdown.js')

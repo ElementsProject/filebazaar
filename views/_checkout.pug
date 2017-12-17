@@ -4,18 +4,16 @@
   .row
     .pay.col-sm-8
       pre= invoice.payreq
-      p
-        a.btn.btn-lg.btn-primary(href=`lightning:${invoice.payreq}`) Pay now
 
-    .qr.col-sm-4: img(src=qruri('lightning:'+invoice.payreq, { mode: 'alphanumeric', margin: 0 }))
+      p.small.text-muted
+        noscript Your browser has JavaScript turned off. Please refresh the page manually after making the payment.
+        span.yesscript #[img(src='_assets/loader.gif', alt='loading')] Awaiting payment.
+        |  The invoice expires #[span(data-countdown-to=invoice.expires_at) at #{ new Date(invoice.expires_at*1000).toUTCString() }].
 
-  noscript
-    p Your browser has JavaScript turned off. Please refresh the page manually after making the payment.
+      p: a.btn.btn-lg.btn-primary(href=`lightning:${invoice.payreq}`) Pay now
 
-  .yesscript
-    p #[img(src='_assets/loader.gif', alt='loading')] Awaiting payment... #[span.text-muted (the page will be updated automatically)]
+    .qr.col-sm-4.mb-3: img(src=qruri('lightning:'+invoice.payreq, { mode: 'alphanumeric', margin: 0 }))
 
-    //- long-pull payment updates via <img> reloading hack. not the prettiest, but extremely terse, and it works
-    img.d-none(src='_invoice/'+invoice.id+'/longpoll.png', onerror='this.src=this.src', onload='location.reload()')
-
-  p.expiry.text-muted Invoice valid until #{ new Date(invoice.expires_at*1000).toUTCString() }.
+//- long-pull payment updates via <img> reloading hack. not the prettiest, but extremely terse, and it works
+img.d-none(src='_invoice/'+invoice.id+'/longpoll.png', onerror='this.src=this.src', onload='location.reload()')
+script(src='_assets/countdown.js')
