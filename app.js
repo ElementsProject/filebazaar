@@ -4,7 +4,7 @@ import { pwrap, pick, fcurrency, fmsat, pngPixel } from './lib/util'
 const app     = require('express')()
     , conf    = require('./lib/config')(process.argv[2] || process.cwd())
     , kite    = require('lightning-strike-client')(conf.kite_url, conf.kite_token)
-    , files   = require('./lib/files')(conf.directory, conf.default_price, conf.invoice_expiry, conf.files)
+    , files   = require('./lib/files')(conf.directory, conf.default_price, conf.invoice_ttl, conf.files)
     , tokenr  = require('./lib/token')(conf.token_secret)
     , preview = require('./lib/preview')(files, conf.cache_path)
 
@@ -74,7 +74,7 @@ app.get('/:rpath(*)', pwrap(async (req, res) => {
   }
 
   else if (invoice) {
-    if (invoice.completed) res.redirect(escape(file.name) + '?token=' + tokenr.make(invoice, conf.access_expiry))
+    if (invoice.completed) res.redirect(escape(file.name) + '?token=' + tokenr.make(invoice, conf.access_ttl))
     else res.render('file', { ...file, invoice })
   }
 

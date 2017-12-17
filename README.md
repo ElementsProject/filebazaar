@@ -63,8 +63,8 @@ directory: /home/shesek/ForSale
 default_price: 0.25 USD
 
 # Expiry times
-invoice_expiry: 3600 # lock-in exchange rate for 1 hour
-download_expiry: 172800 # make download available for 2 days after payment
+invoice_ttl: 3600 # lock-in exchange rate for 1 hour
+download_ttl: 172800 # make download available for 2 days after payment
 
 # Secret for generating HMAC access tokens (required)
 token_secret: SOME_LONG_RANDOM_STRING
