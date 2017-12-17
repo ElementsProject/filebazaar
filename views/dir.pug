@@ -1,0 +1,30 @@
+extend layout
+
+append vars
+  if path != ''
+    - title += ': ' + path
+
+block header
+  - url_ancs = urlpath.split('/')
+  h3
+    a(href='.') ~
+    for d, i in path.split('/')
+      = ' / '
+      a(href=url_ancs.slice(0, i+1).join('/'))= d
+
+block content
+  if files.length
+    table.table.table-striped
+      thead: tr
+        th Name
+        th Type
+        th Size
+        th Price
+      tbody: for file in files
+        tr
+          td: a(href=file.urlpath)= file.name
+          td= file.type == 'dir' ? 'directory' : file.mime || '-'
+          td= file.size ? prettybytes(file.size) : '-'
+          td= file.price ? fcurrency(file.price) : '-'
+  else
+    p.text-muted This directory is empty.

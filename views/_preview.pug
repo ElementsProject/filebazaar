@@ -1,0 +1,41 @@
+.row
+  .col-md-8.mb-3
+    if attr.desc
+      != markdown.render(attr.desc, { linkify: true, typographer: true })
+      hr
+
+    h3 Purchase
+    //-p This file is available for #{ price.amount } #{ price.currency }.
+    form(method='post', action='_invoice')
+      input(type='hidden', name='file', value=path)
+      button.btn.btn-primary.btn-lg.pay-btn(type='submit')= attr.buy_button || `Pay ${fcurrency(price)} to access`
+
+    h3 File preview
+    if preview && preview.media_type
+      - preview_url = urlpath + '?preview'
+
+      if preview.media_type == 'image'
+        p A half-pixelated preview image is available below:
+        a(href=preview_url): img.mw-100(src=preview_url)
+
+      if preview.media_type == 'video'
+        p A preview video of the first 30 seconds is available below:
+        video.mw-100(src=preview_url, controls)
+
+      if preview.media_type == 'audio'
+        p A preview audio of the first 30 seconds is available below:
+        audio.mw-100(src=preview_url, controls)
+
+      if preview.media_type == 'doc'
+        p The first page from the document is available as a preview below:
+        a(href=preview_url): img.mw-100(src=preview_url)
+
+    else
+      p.text-muted No preview available.
+
+  .col-md-4
+    if exif && Object.keys(exif).length
+      h3 Exif metadata
+      p.exif: each val, key in exif
+        | #{key.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z])([A-Z][a-z])/g, '$1 $2')}: #[span.text-muted= val]
+        = ' '

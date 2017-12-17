@@ -1,0 +1,13 @@
+- token_url = urlpath + "?token=" + access.token
+- down_url  = token_url + '&download'
+- view_url  = token_url + '&view'
+
+p Thank you for paying. You can access the purchased file below:
+
+p
+  a.btn.btn-primary(href=down_url) Download
+  = ' '
+  a.btn.btn-secondary(href=view_url) View
+
+p.text-muted Your access will expire #{ new Date(access.expiry*1000).toUTCString() }.
+p.text-muted Until then, you can return to this page to access the file #[a(href=token_url) using this link].

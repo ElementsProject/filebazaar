@@ -1,0 +1,27 @@
+doctype html
+
+block vars
+  - title = conf.sitename || 'filebazaar'
+
+block head
+  meta(chartset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  base(href=conf.url)
+
+  title= title
+
+  link(rel='stylesheet', href='_assets/bootswatch/'+conf.theme+'/bootstrap.min.css')
+  link(rel='stylesheet', href='_assets/style.css')
+  noscript: style .yesscript{display:none}
+
+  if conf.css
+    style= conf.css
+
+.container
+  header: block header
+  hr
+
+  block content
+  hr
+
+  footer filebazaar@#{version}

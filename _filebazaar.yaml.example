@@ -1,0 +1,59 @@
+---
+
+### Server settings
+
+env: production
+
+#port: 9678
+#host: 127.0.0.1
+#url: http://my-public-url.com/
+
+### Lightning Kite
+
+#kite_url: http://localhost:9112
+#kite_token: TOKEN_GOES_HERE
+
+### FileBazaar settings
+
+# The directory containing the files for sale
+# defaults to the directory containing this file
+# directory: /path/to/files
+
+# The default file price, can be overridden for individual files (see below)
+#default_price: 0.25 USD
+
+# Expiry times
+#invoice_expiry: 3600 # lock-in exchange rate for 1 hour
+#download_expiry: 172800 # make download available for 2 days after payment
+
+# Secret for generating HMAC access tokens (required)
+token_secret: $TOKEN_SECRET
+
+# Directory to keep cached preview files
+# defaults to `{directory}/_filebazaar_cache`
+#cache_path: /path/to/filebazaar_cache
+
+### Looks & feel
+
+# See available themes on https://bootswatch.com
+#theme: yeti
+
+# Add custom CSS
+#css: |
+#  body { background: blue }
+#  a { color: orange }
+
+# Set custom views directory
+#views_dir: /path/to/custom/views
+
+# Set custom static files directory
+#static_dir: /path/to/custom/static
+
+### Files settings
+
+#files:
+#  Books/
+#    Mastering-Bitcoin.pdf:
+#      price: 5 USD
+#      button: Buy this book
+

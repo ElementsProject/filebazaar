@@ -1,0 +1,21 @@
+.checkout
+  h3 Pay with Lightning
+  h4 #[strong= invoice.quoted_amount] #{invoice.quoted_currency } = #[strong= fmsat(invoice.msatoshi)] mBTC
+  .row
+    .pay.col-sm-8
+      pre= invoice.payreq
+      p
+        a.btn.btn-lg.btn-primary(href=`lightning:${invoice.payreq}`) Pay now
+
+    .qr.col-sm-4: img(src=qruri('lightning:'+invoice.payreq, { mode: 'alphanumeric', margin: 0 }))
+
+  noscript
+    p Your browser has JavaScript turned off. Please refresh the page manually after making the payment.
+
+  .yesscript
+    p #[img(src='_assets/loader.gif', alt='loading')] Awaiting payment... #[span.text-muted (the page will be updated automatically)]
+
+    //- long-pull payment updates via <img> reloading hack. not the prettiest, but extremely terse, and it works
+    img.d-none(src='_invoice/'+invoice.id+'/longpoll.png', onerror='this.src=this.src', onload='location.reload()')
+
+  p.expiry.text-muted Invoice valid until #{ new Date(invoice.expires_at*1000).toUTCString() }.

@@ -1,0 +1,39 @@
+extend layout
+
+append vars
+  - title += ': ' + path
+
+append head
+  if attr.css
+    style!= attr.css
+
+block header
+  h3
+    a(href='.') ~
+    = ' / '
+    - url_ancs = urlpath.split('/').slice(0, -1)
+    for d, i in path.split('/').slice(0, -1)
+      a(href=url_ancs.slice(0, i+1).join('/'))= d
+      = ' / '
+
+  h1= name
+  h4
+    span.badge.badge-light= mime
+    = ' '
+    span.badge.badge-info= prettybytes(size)
+    = ' '
+    if exif && (exif.Duration || exif.ImageSize || exif.PageCount)
+      span.badge.badge-warning= (exif.Duration || exif.ImageSize || exif.PageCount+ ' pages').replace(/\(.*/, '')
+      = ' '
+    span.badge.badge-success= fcurrency(price)
+
+block content
+
+  if access
+    include _access
+
+  else if invoice
+    include _checkout
+
+  else
+    include _preview
