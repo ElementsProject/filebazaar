@@ -1,3 +1,5 @@
+- expiry_str = new Date(invoice.expires_at*1000).toUTCString()
+
 .checkout
   h3 Pay with Lightning
   h4 #[strong= invoice.quoted_amount] #{invoice.quoted_currency } = #[strong= fmsat(invoice.msatoshi)] mBTC
@@ -8,7 +10,7 @@
       p.small.text-muted
         noscript Your browser has JavaScript turned off. Please refresh the page manually after making the payment.
         span.yesscript #[img(src='_assets/loader.gif', alt='loading')] Awaiting payment.
-        |  The invoice expires #[span(data-countdown-to=invoice.expires_at) at #{ new Date(invoice.expires_at*1000).toUTCString() }].
+        |  The invoice expires #[span(data-countdown-to=invoice.expires_at, title=expiry_str) at #{ expiry_str  }].
 
       p: a.btn.btn-lg.btn-primary(href=`lightning:${invoice.payreq}`) Pay now
 

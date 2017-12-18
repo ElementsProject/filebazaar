@@ -1,6 +1,7 @@
 - token_url = urlpath + "?token=" + access.token
 - down_url  = token_url + '&download'
 - view_url  = token_url + '&view'
+- expiry_str = new Date(access.expiry*1000).toUTCString()
 
 p Thank you for paying. You can access the purchased file below:
 
@@ -10,7 +11,7 @@ p
   a.btn.btn-secondary(href=view_url) View
 
 p.text-muted.
-  Your access will expire #[span(data-countdown-to=access.expiry) at #{ new Date(access.expiry*1000).toUTCString() }].
+  Your access will expire #[span(data-countdown-to=access.expiry, title=expiry_str) at #{ expiry_str }].
   Until then, you can return to this page to access the file #[a(href=token_url) using this link].
 
 script(src='_assets/countdown.js')
