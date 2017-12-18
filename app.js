@@ -32,8 +32,10 @@ Object.assign(app.locals, {
 // Middlewares
 app.get('/favicon.ico', (req, res) => res.sendStatus(204)) // to prevent logging
 app.use(require('morgan')('dev'))
+app.use(require('cookie-parser')())
 app.use(require('body-parser').json())
 app.use(require('body-parser').urlencoded({ extended: false }))
+app.use(require('csurf')({ cookie: true }))
 
 // Static assets
 app.use('/_assets', require('stylus').middleware({ src: conf.static_dir, serve: true }))
@@ -80,7 +82,7 @@ app.get('/:rpath(*)', pwrap(async (req, res) => {
 
   else if ('preview' in req.query) await preview.handler(file, res)
 
-  else res.render('file', { ...file, preview: await preview.metadata(file) })
+  else res.render('file', { ...file, csrf: req.csrfToken(), preview: await preview.metadata(file) })
 }))
 
 // Normalize errors to HTTP status codes

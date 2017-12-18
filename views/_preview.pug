@@ -7,6 +7,7 @@
     h3 Purchase
     //-p This file is available for #{ price.amount } #{ price.currency }.
     form(method='post', action='_invoice')
+      input(type='hidden', name='_csrf', value=csrf)
       input(type='hidden', name='file', value=path)
       button.btn.btn-primary.btn-lg.pay-btn(type='submit')= attr.buy_button || `Pay ${fcurrency(price)} to access`
 
