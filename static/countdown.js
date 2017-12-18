@@ -1,6 +1,6 @@
 (function(){
 
-  document.querySelectorAll('[data-countdown-to]').forEach(el => {
+  document.querySelectorAll('[data-countdown-to]').forEach(function(el) {
     var parent  = el.parentNode
       , expires = +el.dataset.countdownTo
 
