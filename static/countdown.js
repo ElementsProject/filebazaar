@@ -1,8 +1,7 @@
 (function(){
 
   document.querySelectorAll('[data-countdown-to]').forEach(function(el) {
-    var parent  = el.parentNode
-      , expires = +el.dataset.countdownTo
+    var expires = +el.dataset.countdownTo
 
     function update() {
       var left = expires - (+new Date()/1000|0)
