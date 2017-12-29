@@ -8,10 +8,10 @@ env: production
 #host: 127.0.0.1
 #url: http://my-public-url.com/
 
-### Lightning Kite
+### Lightning Charge
 
-#kite_url: http://localhost:9112
-#kite_token: TOKEN_GOES_HERE
+#charge_url: http://localhost:9112
+#charge_token: TOKEN_GOES_HERE
 
 ### FileBazaar settings
 

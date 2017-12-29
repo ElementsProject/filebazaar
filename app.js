@@ -3,7 +3,7 @@ import { pwrap, pick, fcurrency, fmsat, pngPixel } from './lib/util'
 // Setup
 const app     = require('express')()
     , conf    = require('./lib/config')(process.argv[2] || process.cwd())
-    , kite    = require('lightning-strike-client')(conf.kite_url, conf.kite_token)
+    , charge  = require('lightning-charge-client')(conf.charge_url, conf.charge_token)
     , files   = require('./lib/files')(conf.directory, conf.default_price, conf.invoice_ttl, conf.files)
     , tokenr  = require('./lib/token')(conf.token_secret)
     , preview = require('./lib/preview')(files, conf.cache_path)
@@ -46,7 +46,7 @@ app.post('/_invoice', pwrap(async (req, res) => {
   const file = await files.load(req.body.file)
   if (file.type !== 'file') return res.sendStatus(405)
 
-  const invoice = await kite.invoice(files.invoice(file))
+  const invoice = await charge.invoice(files.invoice(file))
   res.status(201).format({
     html: _ => res.redirect(file.urlpath + '?invoice=' + invoice.id)
   , json: _ => res.send(pick(invoice, 'id', 'msatoshi', 'quoted_currency', 'quoted_amount', 'payreq'))
@@ -55,10 +55,10 @@ app.post('/_invoice', pwrap(async (req, res) => {
 
 // Payment updates long-polling via <img> hack
 app.get('/_invoice/:invoice/longpoll.png', pwrap(async (req, res) => {
-  const paid = await kite.wait(req.params.invoice, 100)
+  const paid = await charge.wait(req.params.invoice, 100)
   if (paid) res.set('Content-Type', 'image/png').send(pngPixel)
   else res.sendStatus(402)
-  // @TODO close kite request on client disconnect
+  // @TODO close charge request on client disconnect
 }))
 
 // File browser
@@ -66,7 +66,7 @@ app.get('/:rpath(*)', pwrap(async (req, res) => {
   const file = await files.load(req.params.rpath)
   if (file.type == 'dir') return res.render('dir', file)
 
-  const invoice = req.query.invoice && await kite.fetch(req.query.invoice)
+  const invoice = req.query.invoice && await charge.fetch(req.query.invoice)
       , access  = req.query.token   && tokenr.parse(file.path, req.query.token)
 
   if (access) {

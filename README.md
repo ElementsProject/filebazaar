@@ -10,7 +10,7 @@ Sell digital files with Lightning!
 
 ## Quickstart
 
-Setup [Lightning Kite](https://github.com/ElementsProject/lightning-strike), then:
+Setup [Lightning Charge](https://github.com/ElementsProject/lightning-charge), then:
 
 ```bash
 # Install dependencies for EXIF extraction and preview generation
@@ -48,10 +48,10 @@ host: 127.0.0.1
 env: production
 url: http://my-public-url.com/
 
-### Lightning Kite
+### Lightning Charge
 
-kite_url: http://localhost:9112
-kite_token: API_TOKEN_CONFIGURED_IN_KITE
+charge_url: http://localhost:9112
+charge_token: API_TOKEN_CONFIGURED_IN_CHARGE
 
 ### FileBazaar settings
 

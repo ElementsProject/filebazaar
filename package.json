@@ -22,7 +22,7 @@
     "gm": "^1.23.0",
     "js-yaml": "^3.10.0",
     "jstransformer-markdown-it": "^2.0.0",
-    "lightning-strike-client": "github:ElementsProject/lightning-strike-client-js",
+    "lightning-charge-client": "github:ElementsProject/lightning-charge-client-js",
     "lru-memoize": "github:neilk/lru-memoize",
     "markdown-it": "^8.4.0",
     "mime-types": "^2.1.17",
