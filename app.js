@@ -76,7 +76,7 @@ app.get('/:rpath(*)', pwrap(async (req, res) => {
   }
 
   else if (invoice) {
-    if (invoice.completed) res.redirect(escape(file.name) + '?token=' + tokenr.make(invoice, conf.download_ttl))
+    if (invoice.status == 'paid') res.redirect(escape(file.name) + '?token=' + tokenr.make(invoice, conf.download_ttl))
     else res.render('file', { ...file, invoice })
   }
 

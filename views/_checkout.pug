@@ -1,21 +1,26 @@
 - expiry_str = new Date(invoice.expires_at*1000).toUTCString()
 
-.checkout
-  h3 Pay with Lightning
-  h4 #[strong= invoice.quoted_amount] #{invoice.quoted_currency } = #[strong= fmsat(invoice.msatoshi)] mBTC
-  .row
-    .pay.col-sm-8
-      pre= invoice.payreq
+if invoice.status == 'expired'
+  h3 Invoice expired
+  p Please go back and try again.
 
-      p.small.text-muted
-        noscript Your browser has JavaScript turned off. Please refresh the page manually after making the payment.
-        span.yesscript #[img(src='_assets/loader.gif', alt='loading')] Awaiting payment.
-        |  The invoice expires #[span(data-countdown-to=invoice.expires_at, title=expiry_str) at #{ expiry_str  }].
+else
+  .checkout
+    h3 Pay with Lightning
+    h4 #[strong= invoice.quoted_amount] #{invoice.quoted_currency } = #[strong= fmsat(invoice.msatoshi)] mBTC
+    .row
+      .pay.col-sm-8
+        pre= invoice.payreq
 
-      p: a.btn.btn-lg.btn-primary(href=`lightning:${invoice.payreq}`) Pay now
+        p.small.text-muted
+          noscript Your browser has JavaScript turned off. Please refresh the page manually after making the payment.
+          span.yesscript #[img(src='_assets/loader.gif', alt='loading')] Awaiting payment.
+          |  The invoice expires #[span(data-countdown-to=invoice.expires_at, title=expiry_str) at #{ expiry_str  }].
 
-    .qr.col-sm-4.mb-3: img(src=qruri('lightning:'+invoice.payreq, { mode: 'alphanumeric', margin: 0 }))
+        p: a.btn.btn-lg.btn-primary(href=`lightning:${invoice.payreq}`) Pay now
 
-//- long-pull payment updates via <img> reloading hack. not the prettiest, but extremely terse, and it works
-img.d-none(src='_invoice/'+invoice.id+'/longpoll.png', onerror='this.src=this.src', onload='location.reload()')
-script(src='_assets/countdown.js')
+      .qr.col-sm-4.mb-3: img(src=qruri('lightning:'+invoice.payreq, { mode: 'alphanumeric', margin: 0 }))
+
+  //- long-pull payment updates via <img> reloading hack. not the prettiest, but extremely terse, and it works
+  img.d-none(src='_invoice/'+invoice.id+'/longpoll.png', onerror='this.src=this.src', onload='location.reload()')
+  script(src='_assets/countdown.js')
