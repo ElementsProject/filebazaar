@@ -32,6 +32,13 @@ $ filebazaar init
 $ filebazaar
 ```
 
+## Screenshots
+
+<img src="https://i.imgur.com/Tdwcuhm.png" width="23%"></img>
+<img src="https://i.imgur.com/6SFNRiq.png" width="23%"></img>
+<img src="https://i.imgur.com/MDRaie2.png" width="23%"></img>
+<img src="https://i.imgur.com/yjwjfT8.png" width="23%"></img>
+
 ## Configuration
 
 FileBazaar's configuration options can be managed using the `_filebazaar.yaml` file or via environment variables.
