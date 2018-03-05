@@ -56,7 +56,7 @@ app.post('/_invoice', pwrap(async (req, res) => {
 // Payment updates long-polling via <img> hack
 app.get('/_invoice/:invoice/longpoll.png', pwrap(async (req, res) => {
   const paid = await charge.wait(req.params.invoice, 100)
-  if (paid) res.set('Content-Type', 'image/png').send(pngPixel)
+  if (paid !== null) res.type('png').send(pngPixel)
   else res.sendStatus(402)
   // @TODO close charge request on client disconnect
 }))
@@ -70,8 +70,8 @@ app.get('/:rpath(*)', pwrap(async (req, res) => {
       , access  = req.query.token   && tokenr.parse(file.path, req.query.token)
 
   if (access) {
-    if ('download' in req.query)  res.set('Content-Type', file.mime).download(file.fullpath)
-    else if ('view' in req.query) res.set('Content-Type', file.mime).sendFile(file.fullpath)
+    if ('download' in req.query)  res.type(file.mime).download(file.fullpath)
+    else if ('view' in req.query) res.type(file.mime).sendFile(file.fullpath)
     else res.render('file', { ...file, access })
   }
 
@@ -88,6 +88,7 @@ app.get('/:rpath(*)', pwrap(async (req, res) => {
 // Normalize errors to HTTP status codes
 app.use((err, req, res, next) =>
   err.syscall === 'stat' && err.code == 'ENOENT' ? res.sendStatus(404)
+: err.message === 'not found'                    ? res.sendStatus(404)
 : err.message === 'forbidden'                    ? res.sendStatus(403)
 : next(err))
 
