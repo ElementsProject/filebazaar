@@ -34,7 +34,8 @@ $ filebazaar
 
 ## Configuration
 
-FileBazaar's configuration options can be managed using the `_filebazaar.yaml` file or via envirnoment variables. All config options are optional and have sane defaults, except for `token_secret` which is required. See [`lib/config.js`](#) for more details.
+FileBazaar's configuration options can be managed using the `_filebazaar.yaml` file or via environment variables.
+All config options are optional and have sane defaults, except for `token_secret` which is required. See [`lib/config.js`](https://github.com/shesek/filebazaar/blob/master/lib/config.js) for more details.
 
 Below is an example `_filebazaar.yaml` file:
 
@@ -128,3 +129,6 @@ FileBazaar can currently generate previews for the following file types:
 
 In addition, EXIF metadata will be extracted using [exiftool](https://www.sno.phy.queensu.ca/~phil/exiftool/) and displayed for all file types.
 
+## License
+
+MIT
