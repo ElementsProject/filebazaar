@@ -17,7 +17,7 @@ module.exports = (files, cache_path) => {
     if (p) {
       const dest = path.join(cache_path, cacheName(file)) + '.' + p.ext(file)
       if (!await fs.pathExists(dest)) await p.preview(file.fullpath, dest)
-      return dest
+      return path.resolve(dest)
     }
   }
 
