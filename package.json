@@ -3,9 +3,11 @@
   "version": "0.1.1",
   "description": "",
   "scripts": {
-    "start": "./start.sh"
+    "start": "./start.sh",
+     "dist": "babel -d dist src",
+     "prepublishOnly": "npm run dist"
   },
-  "bin": "cli.js",
+  "bin": "dist/cli.js",
   "author": "Nadav Ivgi",
   "license": "MIT",
   "keywords": [ "bitcoin", "lightning", "lightning-charge", "micropayments" ],

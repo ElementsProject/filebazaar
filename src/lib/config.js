@@ -25,8 +25,8 @@ module.exports = basePath => {
   config.invoice_ttl   = config.invoice_ttl  || +process.env.INVOICE_TTL  || 3600   // 1 hour
   config.download_ttl  = config.download_ttl || +process.env.DOWNLOAD_TTL || 172800 // 2 days
 
-  config.views_dir     = config.views_dir    || process.env.VIEWS_DIR     || path.join(__dirname, '..', 'views')
-  config.static_dir    = config.static_dir   || process.env.STATIC_DIR    || path.join(__dirname, '..', 'static')
+  config.views_dir     = config.views_dir    || process.env.VIEWS_DIR     || path.join(__dirname, '..', '..', 'views')
+  config.static_dir    = config.static_dir   || process.env.STATIC_DIR    || path.join(__dirname, '..', '..', 'static')
   config.theme         = config.theme        || process.env.THEME         || 'yeti'
   config.css           = config.css          || process.env.CSS
 

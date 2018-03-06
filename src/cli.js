@@ -4,9 +4,8 @@ const path   = require('path')
     , fs     = require('fs')
 
 require('babel-polyfill')
-require('babel-register')
 
-const templatePath = path.join(__dirname, '_filebazaar.yaml.example')
+const templatePath = path.join(__dirname, '..', '_filebazaar.yaml.example')
 
 if (process.argv[2] === 'init') {
   const directory   = process.argv[3] || process.cwd()

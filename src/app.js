@@ -25,7 +25,7 @@ Object.assign(app.locals, {
 , prettybytes: require('pretty-bytes')
 , markdown:    require('markdown-it')()
 , qruri:       require('qruri')
-, version:     require('./package').version
+, version:     require('../package').version
 , pretty:      (conf.env === 'development')
 })
 
