@@ -52,7 +52,7 @@ token_secret: $TOKEN_SECRET
 ### Files settings
 
 #files:
-#  Books/
+#  Books/:
 #    Mastering-Bitcoin.pdf:
 #      price: 5 USD
 #      button: Buy this book
