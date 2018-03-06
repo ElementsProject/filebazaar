@@ -1,3 +1,4 @@
+import path from 'path'
 import { pwrap, pick, fcurrency, fmsat, pngPixel } from './lib/util'
 
 // Setup
@@ -40,6 +41,7 @@ app.use(require('csurf')({ cookie: true }))
 // Static assets
 app.use('/_assets', require('stylus').middleware({ src: conf.static_dir, serve: true }))
 app.use('/_assets', require('express').static(conf.static_dir))
+app.use('/_themes', require('express').static(path.resolve(require.resolve('bootswatch/package'), '..', 'dist')))
 
 // Create invoice
 app.post('/_invoice', pwrap(async (req, res) => {
