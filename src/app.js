@@ -1,3 +1,4 @@
+import fs from 'fs'
 import path from 'path'
 import { pwrap, pick, fcurrency, fmsat, pngPixel } from './lib/util'
 
@@ -39,7 +40,7 @@ app.use(require('body-parser').urlencoded({ extended: false }))
 app.use(require('csurf')({ cookie: true }))
 
 // Static assets
-if (app.settings.env == 'development' && require.resolve('stylus'))
+if (fs.existsSync(path.join(conf.static_dir, 'style.styl')))
   app.use('/_assets', require('stylus').middleware({ src: conf.static_dir, serve: true }))
 
 app.use('/_assets', require('express').static(conf.static_dir))
