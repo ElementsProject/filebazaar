@@ -8,6 +8,7 @@
   "bin": "cli.js",
   "author": "Nadav Ivgi",
   "license": "MIT",
+  "keywords": [ "bitcoin", "lightning", "lightning-charge", "micropayments" ],
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bootswatch": "^4.0.0-beta.2",
