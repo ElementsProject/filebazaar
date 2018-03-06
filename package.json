@@ -4,13 +4,19 @@
   "description": "",
   "scripts": {
     "start": "./start.sh",
-     "dist": "babel -d dist src",
-     "prepublishOnly": "npm run dist"
+    "dist": "babel -d dist src",
+    "prepublishOnly": "npm run dist"
   },
   "bin": "dist/cli.js",
   "author": "Nadav Ivgi",
   "license": "MIT",
-  "keywords": [ "bitcoin", "lightning", "lightning-charge", "micropayments" ],
+  "repository": "https://github.com/shesek/filebazaar.git",
+  "keywords": [
+    "bitcoin",
+    "lightning",
+    "lightning-charge",
+    "micropayments"
+  ],
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bootswatch": "^4.0.0-beta.2",
@@ -25,7 +31,7 @@
     "gm": "^1.23.0",
     "js-yaml": "^3.10.0",
     "jstransformer-markdown-it": "^2.0.0",
-    "lightning-charge-client": "github:ElementsProject/lightning-charge-client-js",
+    "lightning-charge-client": "^0.1.7",
     "lru-memoize": "github:neilk/lru-memoize",
     "markdown-it": "^8.4.0",
     "mime-types": "^2.1.17",
