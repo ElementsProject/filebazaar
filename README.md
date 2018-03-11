@@ -8,6 +8,11 @@ Sell digital files with Lightning!
 
 - Generates previews for images, videos, audio, pdf and text documents.
 
+<img src="https://i.imgur.com/Tdwcuhm.png" width="23%" title="FileBazaar screenshot - directory index"></img>
+<img src="https://i.imgur.com/6SFNRiq.png" width="23%" title="FileBazaar screenshot - file preview"></img>
+<img src="https://i.imgur.com/MDRaie2.png" width="23%" title="FileBazaar screenshot - checkout"></img>
+<img src="https://i.imgur.com/yjwjfT8.png" width="23%" title="FileBazaar screenshot - download"></img>
+
 ## Quickstart
 
 Setup [Lightning Charge](https://github.com/ElementsProject/lightning-charge), then:
@@ -25,24 +30,21 @@ $ npm install -g filebazaar
 # Prepare a directory with the files you wish to sell and cd to it
 $ mkdir ~/ForSale && cd ~/ForSale
 
-# Initialize the `_filebazaar.yaml` config file
+# Initialize the `_filebazaar.yaml` config file (generates a random `token_secret`)
 $ filebazaar init
+
+# Edit the config file (`charge_token` is the only required option)
+$ edit _filebazaar.yaml
 
 # Start filebazaar!
 $ filebazaar
 ```
 
-## Screenshots
-
-<img src="https://i.imgur.com/Tdwcuhm.png" width="23%"></img>
-<img src="https://i.imgur.com/6SFNRiq.png" width="23%"></img>
-<img src="https://i.imgur.com/MDRaie2.png" width="23%"></img>
-<img src="https://i.imgur.com/yjwjfT8.png" width="23%"></img>
-
 ## Configuration
 
 FileBazaar's configuration options can be managed using the `_filebazaar.yaml` file or via environment variables.
-All config options are optional and have sane defaults, except for `token_secret` which is required. See [`lib/config.js`](https://github.com/shesek/filebazaar/blob/master/lib/config.js) for more details.
+All config options are optional and have sane defaults, except for `charge_token` and `token_secret` which are required.
+See [`lib/config.js`](https://github.com/shesek/filebazaar/blob/master/lib/config.js) for more details.
 
 Below is an example `_filebazaar.yaml` file:
 
