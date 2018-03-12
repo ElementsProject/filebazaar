@@ -60,7 +60,7 @@ module.exports = (base, default_price, invoice_ttl, files_attr) => {
   , currency:    file.price.currency
   , amount:      file.price.amount
   , expiry:      invoice_ttl
-  , metadata:    { path: file.path }
+  , metadata:    { source: 'filebazaar', path: file.path }
   })
 
   return { load, invoice }
