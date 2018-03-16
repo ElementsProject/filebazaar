@@ -1,5 +1,8 @@
 # FileBazaar
 
+[![npm release](https://img.shields.io/npm/v/filebazaar.svg)](https://www.npmjs.com/package/filebazaar)
+[![MIT license](https://img.shields.io/github/license/shesek/filebazaar.svg)](https://github.com/shesek/filebazaar/blob/master/LICENSE)
+
 Sell digital files with Lightning!
 
 - Simple setup and minimal configuration, just put a bunch of files in a directory and run the server.
