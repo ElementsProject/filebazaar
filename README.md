@@ -16,6 +16,8 @@ Sell digital files with Lightning!
 <img src="https://i.imgur.com/MDRaie2.png" width="23%" title="FileBazaar screenshot - checkout"></img>
 <img src="https://i.imgur.com/yjwjfT8.png" width="23%" title="FileBazaar screenshot - download"></img>
 
+Powered by :zap: [Lightning Charge](https://github.com/ElementsProject/lightning-charge).
+
 ## Quickstart
 
 Setup [Lightning Charge](https://github.com/ElementsProject/lightning-charge), then:
