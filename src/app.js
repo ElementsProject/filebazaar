@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { pwrap, pick, fcurrency, fmsat, pngPixel } from './lib/util'
+import { msat2milli } from 'fmtbtc'
+import { pwrap, pick, fcurrency, pngPixel } from './lib/util'
 
 // Setup
 const app     = require('express')()
@@ -23,7 +24,7 @@ app.enable('case sensitive routing')
 
 // View locals
 Object.assign(app.locals, {
-  conf, fmsat, fcurrency
+  conf, msat2milli, fcurrency
 , prettybytes: require('pretty-bytes')
 , markdown:    require('markdown-it')()
 , qruri:       require('qruri')

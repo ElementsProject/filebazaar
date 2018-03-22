@@ -7,7 +7,10 @@ if invoice.status == 'expired'
 else
   .checkout
     h3 Pay with Lightning
-    h4 #[strong= invoice.quoted_amount] #{invoice.quoted_currency } = #[strong= fmsat(invoice.msatoshi)] mBTC
+    if invoice.quoted_currency && invoice.quoted_currency != 'BTC'
+      h4 #[strong= invoice.quoted_amount] #{invoice.quoted_currency} ≈ #[strong= msat2milli(invoice.msatoshi)] mBTC
+    else
+      h4 #[strong= msat2milli(invoice.msatoshi)] mBTC
     .row
       .pay.col-sm-8
         pre= invoice.payreq

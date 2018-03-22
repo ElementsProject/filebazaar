@@ -41,7 +41,7 @@ module.exports = basePath => {
 const parsePrice = str => {
   const m = str.match(/^([\d.]+) ([a-z]+)$/i)
   if (!m) throw new Error(`invalid price: ${ str }`)
-  return { amount: m[1], currency: m[2] }
+  return { amount: m[1], currency: m[2].toUpperCase() }
 }
 
 const parseFiles = (files, prefix='') =>
