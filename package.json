@@ -10,7 +10,7 @@
   "bin": "dist/cli.js",
   "author": "Nadav Ivgi",
   "license": "MIT",
-  "repository": "https://github.com/shesek/filebazaar.git",
+  "repository": "https://github.com/elementsproject/filebazaar.git",
   "keywords": [
     "bitcoin",
     "lightning",
