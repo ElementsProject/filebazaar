@@ -2,6 +2,8 @@
 
 [![npm release](https://img.shields.io/npm/v/filebazaar.svg)](https://www.npmjs.com/package/filebazaar)
 [![MIT license](https://img.shields.io/github/license/elementsproject/filebazaar.svg)](https://github.com/elementsproject/filebazaar/blob/master/LICENSE)
+[![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![IRC](https://img.shields.io/badge/chat-on%20freenode-brightgreen.svg)](https://webchat.freenode.net/?channels=lightning-charge)
 
 Sell digital files with Bitcoin & Lightning.
 
