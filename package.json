@@ -20,6 +20,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bootswatch": "^4.0.0",
+    "canvas": "^1.6.10",
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",
     "currency-formatter": "^1.4.2",
@@ -38,7 +39,7 @@
     "morgan": "^1.9.0",
     "pretty-bytes": "^4.0.2",
     "pug": "^2.0.3",
-    "qruri": "0.0.3",
+    "qrcode": "^1.2.0",
     "read-chunk": "^2.1.0"
   },
   "devDependencies": {

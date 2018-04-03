@@ -22,7 +22,7 @@ else
 
         p: a.btn.btn-lg.btn-primary(href=`lightning:${invoice.payreq}`) Pay now
 
-      .qr.col-sm-4.mb-3: img(src=qruri(('lightning:'+invoice.payreq).toUpperCase(), { margin: 0 }))
+      .qr.col-sm-4.mb-3: img(src=qruri)
 
   //- long-pull payment updates via <img> reloading hack. not the prettiest, but extremely terse, and it works
   img.d-none(src='_invoice/'+invoice.id+'/longpoll.png', onerror='this.src=this.src', onload='location.reload()')

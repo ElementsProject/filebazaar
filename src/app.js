@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { msat2milli } from 'fmtbtc'
-import { pwrap, pick, fcurrency, pngPixel } from './lib/util'
+import { pwrap, pick, fcurrency, pngPixel, makeQR } from './lib/util'
 
 // Setup
 const app     = require('express')()
@@ -27,7 +27,6 @@ Object.assign(app.locals, {
   conf, msat2milli, fcurrency
 , prettybytes: require('pretty-bytes')
 , markdown:    require('markdown-it')()
-, qruri:       require('qruri')
 , version:     require('../package').version
 , pretty:      (conf.env === 'development')
 })
@@ -84,7 +83,7 @@ app.get('/:rpath(*)', pwrap(async (req, res) => {
 
   else if (invoice) {
     if (invoice.status == 'paid') res.redirect(escape(file.name) + '?token=' + tokenr.make(invoice, conf.download_ttl))
-    else res.render('file', { ...file, invoice })
+    else res.render('file', { ...file, invoice, qruri: await makeQR(invoice) })
   }
 
   else if ('preview' in req.query) await preview.handler(file, res)

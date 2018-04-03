@@ -1,6 +1,7 @@
 import { execFile }  from 'child_process'
 import { btc2milli } from 'fmtbtc'
 import CurrencyF     from 'currency-formatter'
+import qrcode from 'qrcode'
 
 // Promise wrapper for express handler functions
 const pwrap = fn => (req, res, next, ...a) =>
@@ -15,11 +16,13 @@ const exec = (cmd, ...args) => new Promise((resolve, reject) =>
 const pick = (O, ...K) => K.reduce((o, k) => (o[k]=O[k], o), {})
 
 // Format price with currency symbol
-//
 const fcurrency = p => p.currency === 'BTC' ? `${btc2milli(p.amount, true)} mBTC`
                        : CurrencyF.format(p.amount, { code: p.currency })
 
 // Empty 1x1 PNG pixel
 const pngPixel = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=', 'base64')
 
-module.exports = { pwrap, exec, pick, fcurrency, pngPixel }
+// Encode QR in alphanumeric mode
+const makeQR = inv => qrcode.toDataURL(`lightning:${inv.payreq}`.toUpperCase(), { margin: 2, width: 300 })
+
+module.exports = { pwrap, exec, pick, fcurrency, pngPixel, makeQR }
