@@ -10,7 +10,7 @@ module.exports = tokenSecret => {
       .digest().toString('base64').replace(/\W+/g, '')
 
   const make = (invoice, ttl) => {
-    const expiry = invoice.completed_at + ttl
+    const expiry = invoice.paid_at + ttl
         , hash   = hmac(invoice.id, invoice.metadata.path, expiry)
 
     return [ invoice.id, expiry.toString(36), hash ].join('.')
