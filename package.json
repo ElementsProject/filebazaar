@@ -20,7 +20,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bootswatch": "^4.3.1",
-    "canvas": "^1.6.13",
+    "canvas": "^2.6.0",
     "cookie-parser": "^1.4.4",
     "csurf": "^1.9.0",
     "currency-formatter": "^1.5.3",

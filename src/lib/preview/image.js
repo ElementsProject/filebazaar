@@ -1,6 +1,6 @@
-import fs     from 'fs-extra'
-import gm     from 'gm'
-import Canvas from 'canvas'
+import fs from 'fs-extra'
+import gm from 'gm'
+import { Image, Canvas } from 'canvas'
 
 exports.detect = ({ mime }) => /^image\//.test(mime)
 
@@ -12,7 +12,7 @@ exports.preview = async (src, dest) => fs.writeFile(dest, await pixelate(src))
 
 const pixelate = async path => {
   // load original image
-  const img  = new Canvas.Image
+  const img  = new Image
       , buff = img.src = await fs.readFile(path)
 
   // make canvas for preview image
@@ -23,7 +23,7 @@ const pixelate = async path => {
   ctx.patternQuality = 'fast'
 
   // resize left-half to 0.1x, then re-enlarge
-  const scaledImg  = new Canvas.Image
+  const scaledImg  = new Image
   scaledImg.src = await toBuff(gm(buff).crop(img.width/2, img.height, 0, 0).resize(Math.min(img.width*0.1, 80)), 'PNG')
   ctx.drawImage(img, 0, 0, img.width, img.height)
   ctx.drawImage(scaledImg, 0, 0, img.width/2, img.height)
