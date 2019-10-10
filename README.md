@@ -48,6 +48,7 @@ $ filebazaar
 
 FileBazaar's configuration options can be managed using the `_filebazaar.yaml` file or via environment variables.
 All config options are optional and have sane defaults except for `charge_token` and `token_secret`, which are required.
+If you're accessing the web server remotely, you probably also want to set `host` and `url`.
 See [`lib/config.js`](https://github.com/elementsproject/filebazaar/blob/master/src/lib/config.js) for more details.
 
 Below is an example `_filebazaar.yaml` file:

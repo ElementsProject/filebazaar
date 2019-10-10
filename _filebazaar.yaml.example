@@ -6,6 +6,8 @@ env: production
 
 #port: 9678
 #host: 127.0.0.1
+
+# For remote access, set the URL where the web server is publicly available. Defaults to http://{host}:{port}
 #url: http://my-public-url.com/
 
 ### Lightning Charge
