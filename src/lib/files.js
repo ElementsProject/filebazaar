@@ -45,7 +45,7 @@ module.exports = (base, default_price, invoice_ttl, files_attr) => {
     ext && mimeTypes.lookup(ext) || await detectType(fullpath)
 
   const detectType = memoize(async path => {
-    const type = fileType(await readChunk(path, 0, 4100))
+    const type = fileType(await readChunk(path, 0, fileType.minimumBytes))
     return type && type.mime
   }, 100)
 
