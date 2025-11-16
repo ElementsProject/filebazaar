@@ -30,7 +30,7 @@
     "fmtbtc": "0.0.3",
     "fs-extra": "^8.1.0",
     "gm": "^1.23.1",
-    "js-yaml": "^3.13.1",
+    "js-yaml": "^4.1.1",
     "jstransformer-markdown-it": "^2.1.0",
     "lightning-charge-client": "^0.1.11",
     "lru-memoize": "github:neilk/lru-memoize#d89ebe0917333eb29924d8e9dda173c9b505abb7",
